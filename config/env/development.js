@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://troup.mongohq.com:10025/dev",
+    db: "mongodb://lequeso:Ch#ngeme12Ch#ngeme12@troup.mongohq.com:10025/dev",
     app: {
         name: "MEAN - A Modern Stack - Development"
     },
