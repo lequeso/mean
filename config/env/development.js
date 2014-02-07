@@ -1,33 +1,33 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://lequeso:Ch#ngeme12Ch#ngeme12@troup.mongohq.com:10025/dev",
+    db: 'mongodb://localhost/mean-dev',
     app: {
-        name: "MEAN - A Modern Stack - Development"
+        name: 'MEAN - A Modern Stack - Development'
     },
     facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        clientID: 'APP_ID',
+        clientSecret: 'APP_SECRET',
+        callbackURL: 'http://localhost:3000/auth/facebook/callback'
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
+        clientID: 'CONSUMER_KEY',
+        clientSecret: 'CONSUMER_SECRET',
+        callbackURL: 'http://localhost:3000/auth/twitter/callback'
     },
     github: {
-        clientID: "e16db963f50acb38ef73",
-        clientSecret: "ba3c1206486f38f5ccc2d22d3f82c2b1dd01c80c",
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        clientID: 'APP_ID',
+        clientSecret: 'APP_SECRET',
+        callbackURL: 'http://localhost:3000/auth/github/callback'
     },
     google: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        clientID: 'APP_ID',
+        clientSecret: 'APP_SECRET',
+        callbackURL: 'http://localhost:3000/auth/google/callback'
     },
     linkedin: {
-        clientID: "API_KEY",
-        clientSecret: "SECRET_KEY",
-        callbackURL: "http://localhost:3000/auth/linkedin/callback"
+        clientID: 'API_KEY',
+        clientSecret: 'SECRET_KEY',
+        callbackURL: 'http://localhost:3000/auth/linkedin/callback'
     }
-}
+};
