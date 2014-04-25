@@ -23,10 +23,9 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
                 name: name,
                 defaultMenu: defaultMenu
             }, function(menu) {
-                console.log(menu)
                 $scope.menus[name] = menu;
             });
-        };
+        }
 
         // Query server for menus and check permissions
         queryMenu('main', defaultMainMenu);

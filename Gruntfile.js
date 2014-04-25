@@ -1,26 +1,31 @@
 'use strict';
 
 module.exports = function(grunt) {
+
+    if (process.env.NODE_ENV !== 'production') {
+        require('time-grunt')(grunt);
+    }
+
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         assets: grunt.file.readJSON('server/config/assets.json'),
         watch: {
             js: {
-                files: ['gruntfile.js', 'server.js', 'server/**/*.js', 'public/js/**', 'test/**/*.js'],
+                files: ['*.js', 'server/**/*.js', 'public/**/*.js', 'test/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
             },
             html: {
-                files: ['public/views/**', 'server/views/**'],
+                files: ['public/**/views/**', 'server/views/**'],
                 options: {
                     livereload: true
                 }
             },
             css: {
-                files: ['public/css/**'],
+                files: ['public/**/css/**'],
                 tasks: ['csslint'],
                 options: {
                     livereload: true
@@ -29,7 +34,7 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: {
-                src: ['gruntfile.js', 'server.js', 'server/**/*.js', 'public/js/**', 'test/**/*.js', '!test/coverage/**/*.js'],
+                src: ['*.js', 'server/**/*.js', 'public/**/*.js', 'test/**/*.js', '!test/coverage/**/*.js', '!public/system/lib/**'],
                 options: {
                     jshintrc: true
                 }
@@ -48,7 +53,7 @@ module.exports = function(grunt) {
                 csslintrc: '.csslintrc'
             },
             all: {
-                src: ['public/css/**/*.css']
+                src: ['public/**/css/**/*', '!public/system/lib/**']
             }
         },
         cssmin: {
@@ -98,16 +103,7 @@ module.exports = function(grunt) {
     });
 
     //Load NPM tasks
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-csslint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-mocha-test');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-env');
+    require('load-grunt-tasks')(grunt);
 
     //Making grunt default to force in order not to break the project.
     grunt.option('force', true);
@@ -121,4 +117,9 @@ module.exports = function(grunt) {
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+    
+    // For Heroku users only.
+    // Docs: https://github.com/linnovate/mean/wiki/Deploying-on-Heroku
+    grunt.registerTask('heroku:production', ['jshint', 'csslint', 'cssmin', 'uglify']);
+    
 };
